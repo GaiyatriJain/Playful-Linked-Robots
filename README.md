@@ -1,6 +1,7 @@
-<img width="1342" height="670" alt="image" src="https://github.com/user-attachments/assets/f31d4851-12c8-4a80-aec7-7269ac19882d" />
 
 # Playful Linked Robots
+<img width="1342" height="670" alt="image" src="https://github.com/user-attachments/assets/f31d4851-12c8-4a80-aec7-7269ac19882d" />
+
 
 This project involves two small devices that can send simple messages to each other over wifi. It has a cute UI, running on an ESP32-C3 Mini. It has 6 customizable input buttons and displays messages on the screen while playing audio effects via a speaker. 
 
