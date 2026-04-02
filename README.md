@@ -1,7 +1,6 @@
+<img width="910" height="458" alt="image" src="https://github.com/user-attachments/assets/8e620031-aa10-49cd-a0f4-a61adce0c6af" />
 
 # Playful Linked Robots
-<img width="1342" height="670" alt="image" src="https://github.com/user-attachments/assets/f31d4851-12c8-4a80-aec7-7269ac19882d" />
-
 
 This project involves two small devices that can send simple messages to each other over wifi. It has a cute UI, running on an ESP32-C3 Mini. It has 6 customizable input buttons and displays messages on the screen while playing audio effects via a speaker. 
 
@@ -15,11 +14,21 @@ A specific list of hardware can be found in the BOM at the bottom of this page b
 - a PCF8575 I/O expander for reading the buttons
 wired as seen in the image below. 
 
+
+
 <img width="601" height="445" alt="image" src="https://github.com/user-attachments/assets/12728324-c0a2-4a0c-b3b3-aad83ac7e6ef" />
+
+
 
 The project is housed in 3D printed cases. The cases are decorated with a couple features but things like eyes and the colour differences will be painted on post production. 
 
+
+
+
 <img width="843" height="840" alt="image" src="https://github.com/user-attachments/assets/95485104-16c6-47a4-bcc4-587e8b19279f" />
+
+
+
 
 The project works by, when pressing a button on device A, a message is sent to a tiny server which device B can access. Device B is cheking the server and when it gets a message it displays it on screen and vice versa. The functionality is outlined in the firmware documents. there is one for each robot but the only difference is the robots id when making a log in the server. You can customize messages by changing the section under the messages comment. To run this project on your own, you should make your own server on Supabase to house your messages. 
 
