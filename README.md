@@ -4,7 +4,7 @@
 
 This project involves two small devices that can send simple messages to each other over wifi. It has a cute UI, running on an ESP32-C3 Mini. It has 6 customizable input buttons and displays messages on the screen while playing audio effects via a speaker. 
 
-The reason I decided to make this project is twofold. Professionally, I really wanted to learn hardware but I haven't done a hardware project before. So, I started with the concept of the Spotify Display hardware project but I wanted to make it more in line with my interests and needs and that brings me to my second reason being personal. I am going away this summer and my sister (6) has really worried by this. We grew up really close and I took care of her a lot given our age difference and this is the first time we'll be away from each other. So these devices are supposed to be a low tech communication tool she can use as well. This dictated some of the design decisions i.e. the monkey casing because those are my sisters favourite animals. But technically, creating messaging devices that function almost like a mini flip phone is really cool to me and I think understanding these basics through this project allows for more exploration and functionality in the future. 
+The reason I decided to make this project is twofold. Professionally, I really wanted to learn hardware but I haven't done a hardware project before. So, I started with the concept of the Spotify Display hardware project but I wanted to make it more in line with my interests and needs and that brings me to my second reason being personal. I am going away this summer and my sister (6) has been really worried by this. We've grown up really close and I took care of her a lot given our age difference and this is the first time we'll be away from each other. So these devices are supposed to be a low tech communication tool she can use as well over the summer. This dictated some of the design decisions i.e. the monkey casing because those are my sisters favourite animals. But technically, creating messaging devices that function almost like a mini flip phone is really cool to me and I think understanding these basics through this project allows for more exploration and functionality in the future. 
 
 A specific list of hardware can be found in the BOM at the bottom of this page but to summarize, each devices has:
 - an ESP32-C3 Mini
@@ -20,7 +20,7 @@ wired as seen in the image below.
 
 
 
-The project is housed in 3D printed cases. The cases are decorated with a couple features but things like eyes and the colour differences will be painted on post production. 
+The project is housed in 3D printed cases. The cases are decorated with a couple features but things like eyes and the colours will be painted on post production. 
 
 
 
@@ -30,7 +30,7 @@ The project is housed in 3D printed cases. The cases are decorated with a couple
 
 
 
-The project works by, when pressing a button on device A, a message is sent to a tiny server which device B can access. Device B is cheking the server and when it gets a message it displays it on screen and vice versa. The functionality is outlined in the firmware documents. there is one for each robot but the only difference is the robots id when making a log in the server. You can customize messages by changing the section under the messages comment. To run this project on your own, you should make your own server on Supabase to house your messages. 
+The project works by, when pressing a button on device A, a message is sent to a tiny server which device B can access. Device B is checking the server and when it gets a message it displays it on screen.  The same thing happens in reverse when device B sends a message. The functionality is made in the firmware documents. there is one for each robot but the only difference is the robots id when making a log in the server. You can customize messages by changing the section under the messages comment. To run this project on your own, you should make your own server on Supabase to house your messages and add your respective API keys and wifis
 
 
 
