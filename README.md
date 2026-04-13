@@ -46,3 +46,12 @@ The project works by, when pressing a button on device A, a message is sent to a
 | PCF8575 I/O Expander | adds 16 inputs using only 2 pins which allows for all the buttons and electronics | 1 | 3.71 | https://www.amazon.ca/Parallel-Expander-PCF8575-Board-Shifter/dp/B08T7XXHT4/ref=asc_df_B08T7XXHT4?tag=bingshopdesk-20&linkCode=df0&hvadid=79920950061564&hvnetw=o&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=&hvlocphy=5254&hvtargid=pla-4583520413333525&psc=1&msclkid=6afe8f6e6e8c13fed12de6a3ab385806 | Amazon |
 | TFT Screen Module | The screen that displays the UI, drawings, animations etc. | 1 | 13.63 | https://www.amazon.ca/1-8inch-Resolution-Interface-Full-Color-Controller/dp/B083NYBN4Q/ref=asc_df_B083NYBN4Q?tag=bingshopdesk-20&linkCode=df0&hvadid=80745476895770&hvnetw=o&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=&hvlocphy=5254&hvtargid=pla-4584345044715580&psc=1 | Amazon |
 | ESP32 Board | This is the microcontroller for the project so like the projects brain | 1 | 13.99 | https://www.amazon.ca/ESP-WROOM-32-NodeMCU-Bluetooth-Development-Microcontroller/dp/B0CHBMFJBQ/ref=asc_df_B0CHBMFJBQ?tag=bingshopdesk-20&linkCode=df0&hvadid=79920843185609&hvnetw=o&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=&hvlocphy=5254&hvtargid=pla-4583520407436381&th=1 | Amazon |
+
+
+
+## Updated Code
+
+I wanted to change the code to be more modular so that it would be easier to add more functions when I added the characteristics to make it feel more animated. Then, using references, I added face geometry to create an animated character that feels human using micro-movements. I tired to replicate animated monkey style features using big eyes and a smaller mouth - like the monkey learnign apps. Then I made use of the modularity to make the character responsive. I know it's a small touch and doesn't add a ton of functionality but this project is for my younger sister and I think it's something she'll appreciate making it feel like like a box to send messages and more like a toy :)
+
+
+
