@@ -205,3 +205,124 @@ void checkButtons() {
   }
   lastState = currentState;
 }
+
+int getPressedButton() {
+  uint16_t currentState = readPCF();
+
+  for (int i = 0; i < 6; i++) {
+    int pin = buttons[i];
+    bool last = (lastState >> pin) & 1;
+    bool current = (currentState >> pin) & 1;
+
+    if (last == 1 && current == 0) {
+      lastState = currentState;
+      return i;
+    }
+  }
+
+  lastState = currentState;
+  return -1;
+}
+
+unsigned long pressStartTime[6] = {0};
+bool pressActive[6] = {false};
+
+int getLongPressedButton(unsigned long thresholdMs) {
+  uint16_t currentState = readPCF();
+
+  for (int i = 0; i < 6; i++) {
+    int pin = buttons[i];
+    bool current = (currentState >> pin) & 1;
+
+    if (!current && !pressActive[i]) {
+      pressActive[i] = true;
+      pressStartTime[i] = millis();
+    }
+
+    if (pressActive[i] && !current) {
+      if (millis() - pressStartTime[i] > thresholdMs) {
+        pressActive[i] = false;
+        return i;
+      }
+    }
+
+    if (current) {
+      pressActive[i] = false;
+    }
+  }
+
+  return -1;
+}
+
+
+struct FaceState {
+  float eyeOpen;
+  float eyeYOffset;
+  float mouthCurve;
+  float mouthOpen;
+  float energy;
+};
+
+FaceState faceNow  = {0.9, 0.0, 0.0, 0.15, 0.6};
+FaceState faceGoal = faceNow;
+
+unsigned long nextBlinkTime = 0;
+bool blinking = false;
+
+float approach(float current, float target, float amt) {
+  return current + (target - current) * amt;
+}
+
+void setIdleFace() {
+  faceGoal.eyeOpen = 0.9;
+  faceGoal.eyeYOffset = sin(millis() * 0.001) * 2.0;
+  faceGoal.mouthCurve = 0.0;
+  faceGoal.mouthOpen = 0.15;
+  faceGoal.energy = 0.6;
+}
+
+void reactPlayfulFace() {
+  faceGoal.eyeOpen = 1.1;
+  faceGoal.mouthCurve = 0.5;
+  faceGoal.mouthOpen = 0.3;
+  faceGoal.energy = 1.0;
+}
+
+void updateBlink() {
+  unsigned long now = millis();
+
+  if (!blinking && now > nextBlinkTime) {
+    blinking = true;
+    faceGoal.eyeOpen = 0.1;
+    nextBlinkTime = now + random(1200, 3000);
+  }
+
+  if (blinking && faceNow.eyeOpen < 0.2) {
+    blinking = false;
+  }
+}
+
+void updateFace() {
+  updateBlink();
+  float s = 0.08 * faceGoal.energy;
+
+  faceNow.eyeOpen = approach(faceNow.eyeOpen, faceGoal.eyeOpen, s);
+  faceNow.eyeYOffset = approach(faceNow.eyeYOffset, faceGoal.eyeYOffset, s);
+  faceNow.mouthCurve = approach(faceNow.mouthCurve, faceGoal.mouthCurve, s);
+  faceNow.mouthOpen = approach(faceNow.mouthOpen, faceGoal.mouthOpen, s);
+}
+
+void reactToIncomingMessage(String msg) {
+  if (msg.indexOf("😭") != -1) {
+    faceGoal.eyeOpen = 0.6;
+    faceGoal.mouthCurve = -0.5;
+    faceGoal.energy = 0.4;
+  } else {
+    faceGoal.eyeOpen = 1.0;
+    faceGoal.mouthCurve = 0.4;
+    faceGoal.energy = 0.9;
+  }
+}
+void addMicroMovement() {
+  faceGoal.eyeYOffset += sin(millis() * 0.004) * 0.3;
+  faceGoal.mouthCurve += sin(millis() * 0.002
